@@ -13,9 +13,9 @@ import com.mongodb.WriteResult;
 
 public class MongoDB {
 	private final String MONGO_CONNECTION = "mongodb://";
-	private final String USERNAME = "landcraft-admin";
-	private final String PASSWORD = "Ro00Ma0027172004LCA";
-	private final String HOST_TERMINATION = "@ds055505.mongolab.com:55505/landcraft-game-db";
+	private final String USERNAME = "datalab-server-admin";
+	private final String PASSWORD = "Ro00Ma0027172004DLS";
+	private final String HOST_TERMINATION = "@ds061385.mongolab.com:61385/datalab-server-db";
 	private final String CLIENT_TOKEN = "clientToken";
 	private final String DOC_ID = "_id";
 
