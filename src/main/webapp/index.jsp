@@ -9,7 +9,10 @@
 	</head>
 	<body>
 		<div class="main-bg">
-			<img src="img/dl.png" class="logo-center"/>		
+			<img src="img/dl.png" class="logo-center"/>	
+		</div>
+		<div class="footer">
+			<p>© 2016 DataLab Solutions</p>
 		</div>
 	</body>
 </html>
