@@ -17,3 +17,4 @@ local.properties
 .tern-project
 .texlipse
 .recommenders/
+/target/

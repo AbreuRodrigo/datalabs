@@ -1,4 +1,4 @@
-package com.landcraft.server.services;
+package com.datalab.server.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -97,6 +97,10 @@ public class MongoDB {
 		DBCursor cursor = table.find(query);
 				
 		return processCursorResponse(cursor);
+	}
+	
+	public DB getDB() {
+		return db;
 	}
 	
 	@SuppressWarnings("unchecked")

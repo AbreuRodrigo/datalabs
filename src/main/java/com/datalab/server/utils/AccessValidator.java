@@ -1,4 +1,4 @@
-package com.landcraft.server.utils;
+package com.datalab.server.utils;
 
 import javax.ws.rs.core.HttpHeaders;
 

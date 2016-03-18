@@ -1,4 +1,4 @@
-package com.landcraft.server.enums;
+package com.datalab.server.enums;
 
 public enum ResponseCode {
 	SUCCESS(0),

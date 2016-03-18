@@ -1,9 +1,9 @@
-package com.landcraft.server.utils;
+package com.datalab.server.utils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-import com.landcraft.server.enums.ResponseCode;
+import com.datalab.server.enums.ResponseCode;
 
 public class DocumentResponse implements Serializable {
 	private static final long serialVersionUID = -1638229205485160264L;
