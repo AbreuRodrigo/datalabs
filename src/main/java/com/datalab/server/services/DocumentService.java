@@ -1,6 +1,14 @@
 package com.datalab.server.services;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -58,6 +66,26 @@ public class DocumentService {
 
 		return response;
 	}
+	
+	@POST
+	@Path("/list")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<HashMap<String, Object>> listByDocument(HashMap<String,Object> params) {
+		List<HashMap<String, Object>> response = new ArrayList<HashMap<String,Object>>();
+		
+		try {
+			validator.validate(headers);
+			
+			String documentName = (String) params.get(DOCUMENT_NAME);
+			
+			response = mongoDB.listByDocument(documentName);
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+				
+		return response;
+	}
 
 	@POST
 	@Path("/find")
@@ -87,7 +115,7 @@ public class DocumentService {
 	@Path("/save")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public HashMap<String, Object> saveDocument(HashMap<String, Object> document) throws Exception {
+	public HashMap<String, Object> saveDocument(String documentName, HashMap<String, Object> document) throws Exception {
 
 		HashMap<String, Object> response = null;
 
@@ -95,7 +123,7 @@ public class DocumentService {
 			validator.validate(headers);
 
 			if (mongoDB != null && document != null) {
-				mongoDB.save("PlayerStats", document);
+				mongoDB.save(documentName, document);
 			}
 
 			response = buildCustomeSuccessResponse("Document saved successfully.");

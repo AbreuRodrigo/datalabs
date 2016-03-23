@@ -1,6 +1,8 @@
 package com.datalab.server.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.mongodb.BasicDBObject;
@@ -82,11 +84,23 @@ public class MongoDB {
 		}
 	}
 	
-	public HashMap<String, Object> findAll(String document) {
+	@SuppressWarnings("unchecked")
+	public List<HashMap<String, Object>> listByDocument(String document) {
 		DBCollection collection = db.getCollection(document);
 		DBCursor cursor = collection.find();
 		
-		return processCursorResponse(cursor);
+		List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();				
+		
+		HashMap<String, Object> map = null;
+		
+		while(cursor.hasNext()) {
+			map = (HashMap<String, Object>) cursor.next().toMap();
+			map.remove(DOC_ID);
+			
+			list.add(map);
+		}
+		
+		return list;
 	}
 	
 	public HashMap<String, Object> findWithCriterias(String document, HashMap<String, Object> criterias) {
@@ -113,7 +127,7 @@ public class MongoDB {
 		}
 		
 		return response;
-	}
+	}	
 	
 	private String mountDBHostFullName() {
 		return MONGO_CONNECTION + USERNAME + ":" + PASSWORD + HOST_TERMINATION;
