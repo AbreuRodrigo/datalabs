@@ -27,7 +27,7 @@ public class ItemService {
 	public void saveItem(Item item) throws IOException {
 		System.out.println(item.toString());
 		
-//		String newFileName = "mkyong-java-image";
+//		String newFileName = "java-image";
 //		
 //		File imageFile = new File("c:\\JavaWebHosting.png");
 //		
